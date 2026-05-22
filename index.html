@@ -10,8 +10,8 @@
 
     <title>Drug Vision AI</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+    href="style.css">
 
     <!-- TensorFlow -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
@@ -29,27 +29,36 @@
 
         <p class="subtitle">
 
-            Live AI Drug Detection System
+            Smart AI Herbal Drug Detection System
 
         </p>
 
+        <!-- START CAMERA -->
         <button onclick="init()">
 
-    Start Camera
+            Start Camera
 
-</button>
+        </button>
 
-<button onclick="captureAndPredict()">
+        <!-- DETECT -->
+        <button onclick="captureAndPredict()">
 
-    Capture & Detect
+            Capture & Detect
 
-</button> 
-        
-        <!-- WEBCAM -->
+        </button>
+
+        <br><br>
+
+        <!-- CAMERA -->
         <div id="webcam-container"></div>
 
-        <!-- RESULTS -->
+        <br>
+
+        <!-- RESULT -->
         <div id="label-container"></div>
+
+        <!-- DRUG INFO -->
+        <div id="drug-info"></div>
 
     </div>
 
