@@ -2,7 +2,101 @@ const URL = "./my_model/";
 
 let model, webcam;
 
-// START CAMERA + LOAD MODEL
+// HERBAL DRUG DATABASE
+const drugDatabase = {
+
+    "Gooseberry": {
+        hindi: "आंवला",
+        biological: "Phyllanthus emblica / Emblica officinalis",
+        family: "Phyllanthaceae",
+        found: "India, Sri Lanka, Nepal, China",
+        uses: "Used in Triphala, Chyawanprash, hair oils, immunity boosters, liver tonics",
+        medicinal: "Improves digestion, immunity, eyesight, diabetes management, skin care"
+    },
+
+    "Cardamom": {
+        hindi: "इलायची",
+        biological: "Elettaria cardamomum",
+        family: "Zingiberaceae",
+        found: "Kerala, Karnataka, Tamil Nadu, Sri Lanka, Guatemala",
+        uses: "Flavoring agent in syrups, digestive medicines, cough preparations",
+        medicinal: "Relieves indigestion, flatulence, nausea, bad breath"
+    },
+
+    "Lemongrass": {
+        hindi: "लेमन ग्रास",
+        biological: "Cymbopogon citratus",
+        family: "Poaceae",
+        found: "India, Sri Lanka, Thailand, Indonesia, Africa",
+        uses: "Essential oils, herbal teas, aromatherapy, mosquito repellents",
+        medicinal: "Reduces anxiety, fever, fungal infections, muscle pain"
+    },
+
+    "Eucalyptus": {
+        hindi: "सफेदा",
+        biological: "Eucalyptus globulus",
+        family: "Myrtaceae",
+        found: "Australia, India, Brazil, China",
+        uses: "Cough syrups, inhalers, pain balms, mouthwashes",
+        medicinal: "Treats cough, cold, asthma, nasal congestion"
+    },
+
+    "Citronella": {
+        hindi: "सिट्रोनेला घास",
+        biological: "Cymbopogon nardus",
+        family: "Poaceae",
+        found: "India, Indonesia, Sri Lanka",
+        uses: "Mosquito repellents, soaps, perfumes",
+        medicinal: "Antiseptic, insect repellent, headache relief"
+    },
+
+    "Rose": {
+        hindi: "गुलाब",
+        biological: "Rosa damascena",
+        family: "Rosaceae",
+        found: "India, Bulgaria, Turkey, Iran",
+        uses: "Rose water, cosmetics, eye lotions",
+        medicinal: "Cooling, anti-inflammatory, stress relief"
+    },
+
+    "Sandalwood": {
+        hindi: "चंदन",
+        biological: "Santalum album",
+        family: "Santalaceae",
+        found: "Karnataka, Tamil Nadu, Kerala, Indonesia",
+        uses: "Perfumes, ointments, Ayurvedic medicines",
+        medicinal: "Skin disorders, acne, cooling effect"
+    },
+
+    "Camphor": {
+        hindi: "कपूर",
+        biological: "Cinnamomum camphora",
+        family: "Lauraceae",
+        found: "China, Japan, Taiwan, India",
+        uses: "Pain balms, vapor rubs, antiseptic creams",
+        medicinal: "Pain relief, decongestant, antimicrobial"
+    },
+
+    "Ashwagandha": {
+        hindi: "अश्वगंधा",
+        biological: "Withania somnifera",
+        family: "Solanaceae",
+        found: "India, Pakistan, Africa",
+        uses: "Stress relief capsules, immunity boosters",
+        medicinal: "Reduces anxiety, improves stamina and sleep"
+    },
+
+    "Digitalis": {
+        hindi: "डिजिटेलिस",
+        biological: "Digitalis purpurea",
+        family: "Plantaginaceae",
+        found: "Europe and cultivated worldwide",
+        uses: "Used in cardiac medicines",
+        medicinal: "Treats heart failure and atrial fibrillation"
+    }
+};
+
+// START CAMERA
 async function init() {
 
     const modelURL =
@@ -37,29 +131,28 @@ async function init() {
         "webcam-container"
     ).appendChild(webcam.canvas);
 
-    // START CAMERA LOOP
-    window.requestAnimationFrame(loop);
+    // CAMERA LOOP
+    loop();
 }
 
-// CAMERA LOOP
+// LOOP
 async function loop() {
 
     webcam.update();
 
-    window.requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
 }
 
-// CAPTURE + DETECT
+// DETECT DRUG
 async function captureAndPredict() {
 
-    // UPDATE CURRENT FRAME
     webcam.update();
 
-    // PREDICT IMAGE
+    // PREDICT
     const prediction =
     await model.predict(webcam.canvas);
 
-    // FIND HIGHEST PREDICTION
+    // HIGHEST RESULT
     let highestPrediction =
     prediction[0];
 
@@ -84,48 +177,76 @@ async function captureAndPredict() {
     );
 
     // SHOW ONLY DRUG NAME
-    if(highestPrediction.probability > 0.80){
+    resultBox.innerHTML = `
 
-        resultBox.innerHTML = `
+        <div style="
+            background:#1e293b;
+            padding:20px;
+            border-radius:15px;
+            width:300px;
+            margin:auto;
+            font-size:28px;
+            color:white;
+            text-align:center;
+        ">
 
-            <div style="
-                background:#1e293b;
-                padding:20px;
-                border-radius:15px;
-                width:300px;
-                margin:auto;
-                font-size:28px;
-                color:white;
-                text-align:center;
-            ">
+            <strong>
 
-                <strong>
+                ${highestPrediction.className}
 
-                    ${highestPrediction.className}
+            </strong>
 
-                </strong>
+        </div>
+    `;
 
-            </div>
-        `;
+    // DRUG DETAILS
+    const drug =
+    drugDatabase[
+        highestPrediction.className
+    ];
 
-    } else {
+    const infoBox =
+    document.getElementById(
+        "drug-info"
+    );
 
-        resultBox.innerHTML = `
+    if(drug){
 
-            <div style="
-                background:#1e293b;
-                padding:20px;
-                border-radius:15px;
-                width:300px;
-                margin:auto;
-                font-size:22px;
-                color:white;
-                text-align:center;
-            ">
+        infoBox.innerHTML = `
 
-                No Drug Detected
+            <h2>
+                ${highestPrediction.className}
+            </h2>
 
-            </div>
+            <p>
+                <strong>Hindi Name:</strong>
+                ${drug.hindi}
+            </p>
+
+            <p>
+                <strong>Biological Name:</strong>
+                ${drug.biological}
+            </p>
+
+            <p>
+                <strong>Family:</strong>
+                ${drug.family}
+            </p>
+
+            <p>
+                <strong>Found In:</strong>
+                ${drug.found}
+            </p>
+
+            <p>
+                <strong>Pharmacy Uses:</strong>
+                ${drug.uses}
+            </p>
+
+            <p>
+                <strong>Medicinal Uses:</strong>
+                ${drug.medicinal}
+            </p>
         `;
     }
 }
