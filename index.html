@@ -2,57 +2,92 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drug Vision</title>
 
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Drug Vision AI</title>
+
+    <!-- CSS File -->
     <link rel="stylesheet" href="style.css">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    rel="stylesheet">
 
     <!-- TensorFlow -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
 
     <!-- Teachable Machine -->
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image"></script>
+
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1>Drug Vision</h1>
+        <!-- WEBSITE TITLE -->
+        <h1>Drug Vision AI</h1>
 
+        <!-- SUBTITLE -->
         <p class="subtitle">
-            AI Based Drug Detection Website
+            Smart AI Drug Detection System
         </p>
 
-        <div class="upload-box">
+        <!-- IMAGE UPLOAD -->
+        <div class="upload-section">
 
-            <input type="file" id="imageUpload" accept="image/*">
-
-            <br>
-
-            <img id="preview" src="" alt="Preview Image">
+            <input
+            type="file"
+            id="imageUpload"
+            accept="image/*">
 
         </div>
 
+        <!-- IMAGE PREVIEW -->
+        <div class="image-section">
+
+            <img
+            id="preview"
+            src=""
+            alt="Uploaded Image">
+
+        </div>
+
+        <!-- DETECT BUTTON -->
+        <button id="detectBtn">
+
+            Detect Drug
+
+        </button>
+
+        <!-- RESULT BOX -->
         <div class="result-box">
 
-            <h2>Detection Result</h2>
+            <h2>Prediction Result</h2>
 
-            <div id="result"></div>
+            <div id="result">
+
+                Upload image and click detect
+
+            </div>
 
         </div>
 
+        <!-- FOOTER -->
         <footer>
-            Developed using Google Teachable Machine + TensorFlow.js
+
+            Powered by TensorFlow.js &
+            Google Teachable Machine
+
         </footer>
 
     </div>
 
+    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
