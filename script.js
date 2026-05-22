@@ -2,7 +2,7 @@ const URL = "./my_model/";
 
 let model, webcam;
 
-// START CAMERA
+// START CAMERA + LOAD MODEL
 async function init() {
 
     const modelURL =
@@ -37,7 +37,7 @@ async function init() {
         "webcam-container"
     ).appendChild(webcam.canvas);
 
-    // LIVE CAMERA
+    // START LOOP
     loop();
 }
 
@@ -46,17 +46,20 @@ async function loop() {
 
     webcam.update();
 
-    requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);
 }
 
 // CAPTURE + DETECT
 async function captureAndPredict() {
 
-    // PREDICT
+    // UPDATE CAMERA FRAME
+    webcam.update();
+
+    // PREDICT IMAGE
     const prediction =
     await model.predict(webcam.canvas);
 
-    // BEST RESULT
+    // FIND HIGHEST RESULT
     let highestPrediction =
     prediction[0];
 
@@ -80,7 +83,7 @@ async function captureAndPredict() {
         "label-container"
     );
 
-    // SHOW RESULT
+    // SHOW ONLY ONE RESULT
     if(highestPrediction.probability > 0.80){
 
         resultBox.innerHTML = `
@@ -92,6 +95,7 @@ async function captureAndPredict() {
                 width:300px;
                 margin:auto;
                 font-size:22px;
+                color:white;
             ">
 
                 <strong>
@@ -119,6 +123,7 @@ async function captureAndPredict() {
                 width:300px;
                 margin:auto;
                 font-size:20px;
+                color:white;
             ">
 
                 No Drug Detected Clearly
