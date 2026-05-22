@@ -2,7 +2,7 @@ const URL = "./my_model/";
 
 let model, webcam;
 
-// LOAD MODEL + START CAMERA
+// START CAMERA
 async function init() {
 
     const modelURL =
@@ -17,7 +17,7 @@ async function init() {
         metadataURL
     );
 
-    // WEBCAM
+    // START WEBCAM
     webcam = new tmImage.Webcam(
         300,
         300,
@@ -28,8 +28,6 @@ async function init() {
 
     await webcam.play();
 
-    window.requestAnimationFrame(loop);
-
     // SHOW CAMERA
     document.getElementById(
         "webcam-container"
@@ -38,21 +36,23 @@ async function init() {
     document.getElementById(
         "webcam-container"
     ).appendChild(webcam.canvas);
+
+    // LIVE CAMERA
+    loop();
 }
 
-// LOOP
+// CAMERA LOOP
 async function loop() {
 
     webcam.update();
 
-    await predict();
-
-    window.requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
 }
 
-// PREDICT
-async function predict() {
+// CAPTURE + DETECT
+async function captureAndPredict() {
 
+    // PREDICT
     const prediction =
     await model.predict(webcam.canvas);
 
@@ -80,7 +80,7 @@ async function predict() {
         "label-container"
     );
 
-    // SHOW ONLY ONE RESULT
+    // SHOW RESULT
     if(highestPrediction.probability > 0.80){
 
         resultBox.innerHTML = `
