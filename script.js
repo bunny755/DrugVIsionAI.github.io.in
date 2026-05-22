@@ -1,38 +1,15 @@
 async function predict() {
 
+    // GET PREDICTIONS
     const prediction =
     await model.predict(webcam.canvas);
 
-    for(let i = 0;
-        i < maxPredictions;
-        i++){
-
-        const classPrediction =
-
-            prediction[i].className
-            + " : "
-            + (prediction[i]
-            .probability * 100)
-            .toFixed(2)
-            + "%";
-
-        labelContainer.childNodes[i]
-        .innerHTML = classPrediction;
-    }
-}
-
-async function predict() {
-
-    const prediction =
-    await model.predict(webcam.canvas);
-
-    // FIND HIGHEST PREDICTION
+    // STORE HIGHEST RESULT
     let highestPrediction =
     prediction[0];
 
-    for(let i = 1;
-        i < prediction.length;
-        i++){
+    // FIND BEST MATCH
+    for(let i = 1; i < prediction.length; i++){
 
         if(
             prediction[i].probability >
@@ -44,31 +21,32 @@ async function predict() {
         }
     }
 
-    // SHOW ONLY BEST RESULT
-    let resultText = "";
-
+    // SHOW RESULT
     if(highestPrediction.probability > 0.80){
 
-        resultText =
+        labelContainer.innerHTML = `
 
-        highestPrediction.className
-        + " : "
-        + (highestPrediction.probability * 100)
-        .toFixed(2)
-        + "%";
+            <div>
+
+                ${highestPrediction.className}
+
+                <br><br>
+
+                Accuracy :
+                ${(highestPrediction.probability * 100).toFixed(2)}%
+
+            </div>
+        `;
 
     } else {
 
-        resultText =
-        "No Drug Detected Clearly";
+        labelContainer.innerHTML = `
+
+            <div>
+
+                No Drug Detected Clearly
+
+            </div>
+        `;
     }
-
-    labelContainer.innerHTML = `
-
-        <div>
-
-            ${resultText}
-
-        </div>
-    `;
 }
