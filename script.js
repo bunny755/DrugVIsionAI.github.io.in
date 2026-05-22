@@ -5,7 +5,7 @@ let model, webcam;
 // HERBAL DRUG DATABASE
 const drugDatabase = {
 
-    "Gooseberry": {
+    "gooseberry": {
         hindi: "आंवला",
         biological: "Phyllanthus emblica / Emblica officinalis",
         family: "Phyllanthaceae",
@@ -14,7 +14,7 @@ const drugDatabase = {
         medicinal: "Improves digestion, immunity, eyesight, diabetes management, skin care"
     },
 
-    "Cardamom": {
+    "cardamom": {
         hindi: "इलायची",
         biological: "Elettaria cardamomum",
         family: "Zingiberaceae",
@@ -23,7 +23,7 @@ const drugDatabase = {
         medicinal: "Relieves indigestion, flatulence, nausea, bad breath"
     },
 
-    "Lemongrass": {
+    "lemongrass": {
         hindi: "लेमन ग्रास",
         biological: "Cymbopogon citratus",
         family: "Poaceae",
@@ -32,7 +32,7 @@ const drugDatabase = {
         medicinal: "Reduces anxiety, fever, fungal infections, muscle pain"
     },
 
-    "Eucalyptus": {
+    "eucalyptus": {
         hindi: "सफेदा",
         biological: "Eucalyptus globulus",
         family: "Myrtaceae",
@@ -41,7 +41,7 @@ const drugDatabase = {
         medicinal: "Treats cough, cold, asthma, nasal congestion"
     },
 
-    "Citronella": {
+    "citronella": {
         hindi: "सिट्रोनेला घास",
         biological: "Cymbopogon nardus",
         family: "Poaceae",
@@ -50,7 +50,7 @@ const drugDatabase = {
         medicinal: "Antiseptic, insect repellent, headache relief"
     },
 
-    "Rose": {
+    "rose": {
         hindi: "गुलाब",
         biological: "Rosa damascena",
         family: "Rosaceae",
@@ -59,7 +59,7 @@ const drugDatabase = {
         medicinal: "Cooling, anti-inflammatory, stress relief"
     },
 
-    "Sandalwood": {
+    "sandalwood": {
         hindi: "चंदन",
         biological: "Santalum album",
         family: "Santalaceae",
@@ -68,7 +68,7 @@ const drugDatabase = {
         medicinal: "Skin disorders, acne, cooling effect"
     },
 
-    "Camphor": {
+    "camphor": {
         hindi: "कपूर",
         biological: "Cinnamomum camphora",
         family: "Lauraceae",
@@ -77,7 +77,7 @@ const drugDatabase = {
         medicinal: "Pain relief, decongestant, antimicrobial"
     },
 
-    "Ashwagandha": {
+    "ashwagandha": {
         hindi: "अश्वगंधा",
         biological: "Withania somnifera",
         family: "Solanaceae",
@@ -86,7 +86,7 @@ const drugDatabase = {
         medicinal: "Reduces anxiety, improves stamina and sleep"
     },
 
-    "Digitalis": {
+    "digitalis": {
         hindi: "डिजिटेलिस",
         biological: "Digitalis purpurea",
         family: "Plantaginaceae",
@@ -135,12 +135,12 @@ async function init() {
     loop();
 }
 
-// LOOP
+// CAMERA LOOP
 async function loop() {
 
     webcam.update();
 
-    requestAnimationFrame(loop);
+    window.requestAnimationFrame(loop);
 }
 
 // DETECT DRUG
@@ -170,13 +170,21 @@ async function captureAndPredict() {
         }
     }
 
+    // CONVERT TO LOWERCASE
+    const detectedDrug =
+    highestPrediction.className.toLowerCase();
+
+    // GET DRUG DATA
+    const drug =
+    drugDatabase[detectedDrug];
+
     // RESULT BOX
     const resultBox =
     document.getElementById(
         "label-container"
     );
 
-    // SHOW ONLY DRUG NAME
+    // SHOW DRUG NAME
     resultBox.innerHTML = `
 
         <div style="
@@ -199,17 +207,13 @@ async function captureAndPredict() {
         </div>
     `;
 
-    // DRUG DETAILS
-    const drug =
-    drugDatabase[
-        highestPrediction.className
-    ];
-
+    // INFO BOX
     const infoBox =
     document.getElementById(
         "drug-info"
     );
 
+    // SHOW INFORMATION
     if(drug){
 
         infoBox.innerHTML = `
@@ -247,6 +251,15 @@ async function captureAndPredict() {
                 <strong>Medicinal Uses:</strong>
                 ${drug.medicinal}
             </p>
+        `;
+
+    } else {
+
+        infoBox.innerHTML = `
+
+            <h2>
+                No Information Available
+            </h2>
         `;
     }
 }
