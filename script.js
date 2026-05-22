@@ -2,61 +2,73 @@ const URL = "./my_model/";
 
 let model, webcam, labelContainer, maxPredictions;
 
-// LOAD MODEL + WEBCAM
 async function init() {
 
-    const modelURL =
-    URL + "model.json";
+    try {
 
-    const metadataURL =
-    URL + "metadata.json";
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
 
-    // LOAD MODEL
-    model = await tmImage.load(
-        modelURL,
-        metadataURL
-    );
+        // LOAD MODEL
+        model = await tmImage.load(
+            modelURL,
+            metadataURL
+        );
 
-    maxPredictions =
-    model.getTotalClasses();
+        maxPredictions =
+        model.getTotalClasses();
 
-    // WEBCAM SETUP
-    const flip = true;
+        // WEBCAM
+        const flip = true;
 
-    webcam = new tmImage.Webcam(
-        300,
-        300,
-        flip
-    );
+        webcam = new tmImage.Webcam(
+            300,
+            300,
+            flip
+        );
 
-    await webcam.setup();
+        await webcam.setup();
 
-    await webcam.play();
+        await webcam.play();
 
-    window.requestAnimationFrame(loop);
+        window.requestAnimationFrame(loop);
 
-    // ADD WEBCAM
-    document.getElementById(
-        "webcam-container"
-    ).appendChild(webcam.canvas);
+        // SHOW CAMERA
+        document.getElementById(
+            "webcam-container"
+        ).innerHTML = "";
 
-    // LABELS
-    labelContainer =
-    document.getElementById(
-        "label-container"
-    );
+        document.getElementById(
+            "webcam-container"
+        ).appendChild(webcam.canvas);
 
-    for(let i = 0;
-        i < maxPredictions;
-        i++){
+        // LABELS
+        labelContainer =
+        document.getElementById(
+            "label-container"
+        );
 
-        labelContainer.appendChild(
-            document.createElement("div")
+        labelContainer.innerHTML = "";
+
+        for(let i = 0;
+            i < maxPredictions;
+            i++){
+
+            labelContainer.appendChild(
+                document.createElement("div")
+            );
+        }
+
+    } catch(error){
+
+        console.error(error);
+
+        alert(
+            "ERROR: Model not loading. Check my_model folder."
         );
     }
 }
 
-// LOOP
 async function loop() {
 
     webcam.update();
@@ -66,13 +78,10 @@ async function loop() {
     window.requestAnimationFrame(loop);
 }
 
-// PREDICT
 async function predict() {
 
     const prediction =
-    await model.predict(
-        webcam.canvas
-    );
+    await model.predict(webcam.canvas);
 
     for(let i = 0;
         i < maxPredictions;
@@ -87,9 +96,7 @@ async function predict() {
             .toFixed(2)
             + "%";
 
-        labelContainer
-        .childNodes[i]
-        .innerHTML =
-        classPrediction;
+        labelContainer.childNodes[i]
+        .innerHTML = classPrediction;
     }
 }
