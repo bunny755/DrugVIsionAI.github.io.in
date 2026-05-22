@@ -1,15 +1,68 @@
+const URL = "./my_model/";
+
+let model, webcam;
+
+// LOAD MODEL + START CAMERA
+async function init() {
+
+    const modelURL =
+    URL + "model.json";
+
+    const metadataURL =
+    URL + "metadata.json";
+
+    // LOAD MODEL
+    model = await tmImage.load(
+        modelURL,
+        metadataURL
+    );
+
+    // WEBCAM
+    webcam = new tmImage.Webcam(
+        300,
+        300,
+        true
+    );
+
+    await webcam.setup();
+
+    await webcam.play();
+
+    window.requestAnimationFrame(loop);
+
+    // SHOW CAMERA
+    document.getElementById(
+        "webcam-container"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "webcam-container"
+    ).appendChild(webcam.canvas);
+}
+
+// LOOP
+async function loop() {
+
+    webcam.update();
+
+    await predict();
+
+    window.requestAnimationFrame(loop);
+}
+
+// PREDICT
 async function predict() {
 
-    // GET PREDICTIONS
     const prediction =
     await model.predict(webcam.canvas);
 
-    // STORE HIGHEST RESULT
+    // BEST RESULT
     let highestPrediction =
     prediction[0];
 
-    // FIND BEST MATCH
-    for(let i = 1; i < prediction.length; i++){
+    for(let i = 1;
+        i < prediction.length;
+        i++){
 
         if(
             prediction[i].probability >
@@ -21,14 +74,31 @@ async function predict() {
         }
     }
 
-    // SHOW RESULT
+    // RESULT BOX
+    const resultBox =
+    document.getElementById(
+        "label-container"
+    );
+
+    // SHOW ONLY ONE RESULT
     if(highestPrediction.probability > 0.80){
 
-        labelContainer.innerHTML = `
+        resultBox.innerHTML = `
 
-            <div>
+            <div style="
+                background:#1e293b;
+                padding:20px;
+                border-radius:15px;
+                width:300px;
+                margin:auto;
+                font-size:22px;
+            ">
 
-                ${highestPrediction.className}
+                <strong>
+
+                    ${highestPrediction.className}
+
+                </strong>
 
                 <br><br>
 
@@ -40,9 +110,16 @@ async function predict() {
 
     } else {
 
-        labelContainer.innerHTML = `
+        resultBox.innerHTML = `
 
-            <div>
+            <div style="
+                background:#1e293b;
+                padding:20px;
+                border-radius:15px;
+                width:300px;
+                margin:auto;
+                font-size:20px;
+            ">
 
                 No Drug Detected Clearly
 
