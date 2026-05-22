@@ -3,20 +3,21 @@ body{
     margin:0;
     padding:0;
     background:#0f172a;
-    font-family:Arial;
     color:white;
+    font-family:Arial;
     text-align:center;
 }
 
 .container{
 
     margin-top:40px;
+    padding-bottom:50px;
 }
 
 h1{
 
-    font-size:50px;
     color:#38bdf8;
+    font-size:50px;
 }
 
 .subtitle{
@@ -27,23 +28,19 @@ h1{
 
 button{
 
-    padding:15px 30px;
-    font-size:18px;
-    border:none;
-    border-radius:10px;
+    padding:15px 25px;
     background:#38bdf8;
+    border:none;
     color:white;
+    border-radius:10px;
     cursor:pointer;
+    font-size:18px;
+    margin:10px;
 }
 
 button:hover{
 
     background:#0ea5e9;
-}
-
-#webcam-container{
-
-    margin-top:30px;
 }
 
 canvas{
@@ -54,17 +51,22 @@ canvas{
 
 #label-container{
 
-    margin-top:30px;
-    width:300px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-top:20px;
 }
 
-#label-container div{
+#drug-info{
 
+    width:80%;
+    max-width:900px;
+    margin:30px auto;
     background:#1e293b;
-    margin:10px;
-    padding:15px;
-    border-radius:10px;
-    font-size:18px;
+    padding:25px;
+    border-radius:20px;
+    text-align:left;
+    line-height:1.8;
+}
+
+#drug-info h2{
+
+    color:#38bdf8;
 }
