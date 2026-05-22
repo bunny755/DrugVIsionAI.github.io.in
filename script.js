@@ -9,7 +9,7 @@ async function init() {
     URL + "model.json";
 
     const metadataURL =
-   URL + "metadata.json";
+    URL + "metadata.json";
 
     // LOAD MODEL
     model = await tmImage.load(
@@ -37,8 +37,8 @@ async function init() {
         "webcam-container"
     ).appendChild(webcam.canvas);
 
-    // START LOOP
-    loop();
+    // START CAMERA LOOP
+    window.requestAnimationFrame(loop);
 }
 
 // CAMERA LOOP
@@ -52,14 +52,14 @@ async function loop() {
 // CAPTURE + DETECT
 async function captureAndPredict() {
 
-    // UPDATE CAMERA FRAME
+    // UPDATE CURRENT FRAME
     webcam.update();
 
     // PREDICT IMAGE
     const prediction =
     await model.predict(webcam.canvas);
 
-    // FIND HIGHEST RESULT
+    // FIND HIGHEST PREDICTION
     let highestPrediction =
     prediction[0];
 
@@ -109,27 +109,23 @@ async function captureAndPredict() {
         `;
 
     } else {
-resultBox.innerHTML = `
 
-    <div style="
-        background:#1e293b;
-        padding:20px;
-        border-radius:15px;
-        width:300px;
-        margin:auto;
-        font-size:28px;
-        color:white;
-        text-align:center;
-    ">
+        resultBox.innerHTML = `
 
-        <strong>
+            <div style="
+                background:#1e293b;
+                padding:20px;
+                border-radius:15px;
+                width:300px;
+                margin:auto;
+                font-size:22px;
+                color:white;
+                text-align:center;
+            ">
 
-            ${highestPrediction.className}
+                No Drug Detected
 
-        </strong>
-
-    </div>
-`;
+            </div>
         `;
     }
 }
