@@ -109,23 +109,27 @@ async function captureAndPredict() {
         `;
 
     } else {
+resultBox.innerHTML = `
 
-        resultBox.innerHTML = `
+    <div style="
+        background:#1e293b;
+        padding:20px;
+        border-radius:15px;
+        width:300px;
+        margin:auto;
+        font-size:28px;
+        color:white;
+        text-align:center;
+    ">
 
-            <div style="
-                background:#1e293b;
-                padding:20px;
-                border-radius:15px;
-                width:300px;
-                margin:auto;
-                font-size:22px;
-                color:white;
-                text-align:center;
-            ">
+        <strong>
 
-                No Drug Detected
+            ${highestPrediction.className}
 
-            </div>
+        </strong>
+
+    </div>
+`;
         `;
     }
 }
