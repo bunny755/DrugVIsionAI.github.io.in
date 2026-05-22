@@ -9,7 +9,7 @@ async function init() {
     URL + "model.json";
 
     const metadataURL =
-    URL + "metadata.json";
+   URL + "metadata.json";
 
     // LOAD MODEL
     model = await tmImage.load(
@@ -83,7 +83,7 @@ async function captureAndPredict() {
         "label-container"
     );
 
-    // SHOW ONLY ONE RESULT
+    // SHOW ONLY DRUG NAME
     if(highestPrediction.probability > 0.80){
 
         resultBox.innerHTML = `
@@ -94,8 +94,9 @@ async function captureAndPredict() {
                 border-radius:15px;
                 width:300px;
                 margin:auto;
-                font-size:22px;
+                font-size:28px;
                 color:white;
+                text-align:center;
             ">
 
                 <strong>
@@ -103,11 +104,6 @@ async function captureAndPredict() {
                     ${highestPrediction.className}
 
                 </strong>
-
-                <br><br>
-
-                Accuracy :
-                ${(highestPrediction.probability * 100).toFixed(2)}%
 
             </div>
         `;
@@ -122,11 +118,12 @@ async function captureAndPredict() {
                 border-radius:15px;
                 width:300px;
                 margin:auto;
-                font-size:20px;
+                font-size:22px;
                 color:white;
+                text-align:center;
             ">
 
-                No Drug Detected Clearly
+                No Drug Detected
 
             </div>
         `;
