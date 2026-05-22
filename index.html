@@ -10,18 +10,14 @@
 
     <title>Drug Vision AI</title>
 
-    <!-- CSS File -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-    rel="stylesheet">
-
     <!-- TensorFlow -->
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 
     <!-- Teachable Machine -->
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
 </head>
 
@@ -29,65 +25,30 @@
 
     <div class="container">
 
-        <!-- WEBSITE TITLE -->
         <h1>Drug Vision AI</h1>
 
-        <!-- SUBTITLE -->
         <p class="subtitle">
-            Smart AI Drug Detection System
+
+            Live AI Drug Detection System
+
         </p>
 
-        <!-- IMAGE UPLOAD -->
-        <div class="upload-section">
+        <!-- START BUTTON -->
+        <button type="button"
+        onclick="init()">
 
-            <input
-            type="file"
-            id="imageUpload"
-            accept="image/*">
-
-        </div>
-
-        <!-- IMAGE PREVIEW -->
-        <div class="image-section">
-
-            <img
-            id="preview"
-            src=""
-            alt="Uploaded Image">
-
-        </div>
-
-        <!-- DETECT BUTTON -->
-        <button id="detectBtn">
-
-            Detect Drug
+            Start Detection
 
         </button>
 
-        <!-- RESULT BOX -->
-        <div class="result-box">
+        <!-- WEBCAM -->
+        <div id="webcam-container"></div>
 
-            <h2>Prediction Result</h2>
-
-            <div id="result">
-
-                Upload image and click detect
-
-            </div>
-
-        </div>
-
-        <!-- FOOTER -->
-        <footer>
-
-            Powered by TensorFlow.js &
-            Google Teachable Machine
-
-        </footer>
+        <!-- RESULTS -->
+        <div id="label-container"></div>
 
     </div>
 
-    <!-- JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
