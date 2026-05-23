@@ -1,83 +1,257 @@
-body{
+/* =========================
+   GLOBAL
+========================= */
 
+*{
     margin:0;
     padding:0;
-    background:#0f172a;
-    color:white;
-    font-family:Arial;
-    text-align:center;
+    box-sizing:border-box;
 }
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#067030;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+/* =========================
+   CONTAINER
+========================= */
 
 .container{
 
-    margin-top:40px;
-    padding-bottom:50px;
+    width:90%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:40px 20px;
 }
+
+/* =========================
+   TITLE
+========================= */
 
 h1{
 
-    color:#38bdf8;
-    font-size:50px;
+    text-align:center;
+
+    font-size:65px;
+
+    margin-bottom:10px;
+
+    color:#d1fae5;
+
+    font-weight:700;
 }
 
 .subtitle{
 
-    font-size:20px;
-    margin-bottom:30px;
+    text-align:center;
+
+    font-size:22px;
+
+    margin-bottom:40px;
+
+    color:#ecfdf5;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-section{
+
+    text-align:center;
+
+    margin-bottom:40px;
 }
 
 button{
 
-    padding:15px 25px;
-    background:#38bdf8;
-    border:none;
-    color:white;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:18px;
+    padding:15px 35px;
+
     margin:10px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    background:#d1fae5;
+
+    color:#067030;
+
+    transition:0.3s;
 }
 
 button:hover{
 
-    background:#0ea5e9;
+    transform:scale(1.05);
+
+    background:white;
 }
 
-canvas{
+/* =========================
+   CAMERA
+========================= */
 
-    border-radius:20px;
-    border:4px solid #38bdf8;
-}
+#webcam-container{
 
-#label-container{
+    display:flex;
+
+    justify-content:center;
 
     margin-top:20px;
 }
 
+canvas{
+
+    border-radius:25px;
+
+    border:5px solid rgba(255,255,255,0.2);
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#label-container{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+}
+
+.result-card{
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    padding:25px 40px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.result-card h2{
+
+    font-size:38px;
+
+    color:white;
+}
+
+/* =========================
+   DRUG INFO
+========================= */
+
 #drug-info{
 
-    width:80%;
-    max-width:900px;
-    margin:30px auto;
-    background:#1e293b;
-    padding:25px;
+    margin-top:50px;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box{
+
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(12px);
+
+    padding:28px;
+
     border-radius:20px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+
+    line-height:2;
+
     text-align:left;
-    line-height:1.8;
 }
 
-#drug-info h2{
-
-    color:#38bdf8;
-}
+/* =========================
+   INFO TITLES
+========================= */
 
 .info-title{
 
-    color:black;
+    color:#020617;
 
-    font-size:22px;
+    font-size:24px;
 
     font-weight:bold;
 
-    margin-bottom:12px;
+    margin-bottom:15px;
+}
+
+/* =========================
+   INFO TEXT
+========================= */
+
+.info-text{
+
+    color:white;
+
+    font-size:17px;
+
+    text-align:justify;
+
+    line-height:2;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:768px){
+
+    h1{
+
+        font-size:45px;
+    }
+
+    .subtitle{
+
+        font-size:18px;
+    }
+
+    button{
+
+        width:100%;
+    }
+
+    canvas{
+
+        width:100% !important;
+
+        height:auto !important;
+    }
+
+    .result-card{
+
+        width:100%;
+    }
 }
