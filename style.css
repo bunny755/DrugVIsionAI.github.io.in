@@ -70,8 +70,6 @@ button{
 
     padding:15px 35px;
 
-    margin:10px;
-
     border:none;
 
     border-radius:14px;
@@ -87,8 +85,6 @@ button{
     color:#067030;
 
     transition:0.3s;
-
-    display:inline-block;
 }
 
 button:hover{
