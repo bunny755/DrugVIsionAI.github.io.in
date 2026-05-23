@@ -63,22 +63,37 @@ h1{
 }
 
 /* =========================
-   BUTTON SECTION
+   BUTTONS
 ========================= */
 
-.button-section{
+button{
 
-    display:flex;
+    padding:15px 35px;
 
-    justify-content:center;
+    margin:10px;
 
-    align-items:center;
+    border:none;
 
-    gap:20px;
+    border-radius:14px;
 
-    margin-bottom:40px;
+    font-size:18px;
 
-    flex-wrap:wrap;
+    font-weight:600;
+
+    cursor:pointer;
+
+    background:#d1fae5;
+
+    color:#067030;
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    background:white;
 }
 
 /* =========================
