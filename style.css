@@ -87,40 +87,8 @@ button{
     color:#067030;
 
     transition:0.3s;
-}
 
-button:hover{
-
-    transform:translateY(-3px);
-
-    background:white;
-}
-
-/* =========================
-   BUTTONS
-========================= */
-
-button{
-
-    padding:15px 35px;
-
-    border:none;
-
-    border-radius:14px;
-
-    font-size:18px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    background:#d1fae5;
-
-    color:#067030;
-
-    transition:0.3s;
-
-    min-width:220px;
+    display:inline-block;
 }
 
 button:hover{
