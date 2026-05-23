@@ -89,3 +89,15 @@ canvas{
 
     display:inline-block;
 }
+.info-title{
+
+    color:black;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    margin-bottom:12px;
+
+    display:block;
+}
