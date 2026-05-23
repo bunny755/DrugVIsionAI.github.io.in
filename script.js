@@ -10,15 +10,20 @@ const drugDatabase = {
         family: "Phyllanthaceae",
         part: "Fruit",
 
-        description: `Amla is a medium-sized deciduous tree that grows up to 8–18 meters in height. The bark is light grey and exfoliates in irregular flakes. The leaves are small, simple, and closely arranged, giving the appearance of pinnate leaves. The fruit is nearly spherical, smooth, pale greenish-yellow, and contains six vertical furrows. The fruit has a sour and astringent taste because of the presence of vitamin C and tannins.`,
+        description: 
+            `Amla is a medium-sized deciduous tree that grows up to 8–18 meters in height. The bark is light grey and exfoliates in irregular flakes. The leaves are small, simple, and closely arranged, giving the appearance of pinnate leaves. The fruit is nearly spherical, smooth, pale greenish-yellow, and contains six vertical furrows. The fruit has a sour and astringent taste because of the presence of vitamin C and tannins.`,
 
-        found: `Amla is native to India and is widely distributed in tropical and subtropical regions. It grows abundantly in Uttar Pradesh, Madhya Pradesh, Rajasthan, Gujarat, Maharashtra, and Tamil Nadu. It is also found in Sri Lanka, Nepal, Pakistan, Bangladesh, and Southeast Asian countries. It grows well in dry deciduous forests and tolerates moderate drought conditions.`,
+        found: 
+            `Amla is native to India and is widely distributed in tropical and subtropical regions. It grows abundantly in Uttar Pradesh, Madhya Pradesh, Rajasthan, Gujarat, Maharashtra, and Tamil Nadu. It is also found in Sri Lanka, Nepal, Pakistan, Bangladesh, and Southeast Asian countries. It grows well in dry deciduous forests and tolerates moderate drought conditions.`,
 
-        constituents: `Vitamin C (ascorbic acid), Tannins, Gallic acid, Ellagic acid, Emblicanin A and B, Pectin, Minerals and amino acids.`,
+        constituents: 
+            `Vitamin C (ascorbic acid), Tannins, Gallic acid, Ellagic acid, Emblicanin A and B, Pectin, Minerals and amino acids.`,
 
-        uses: `Amla is widely used in Ayurvedic, Unani, and herbal formulations. It is an important ingredient in Chyawanprash, Triphala powder, Liver tonics, Antioxidant syrups, Hair oils and shampoos, Vitamin supplements, and Anti-aging formulations.`,
+        uses: 
+            `Amla is widely used in Ayurvedic, Unani, and herbal formulations. It is an important ingredient in Chyawanprash, Triphala powder, Liver tonics, Antioxidant syrups, Hair oils and shampoos, Vitamin supplements, and Anti-aging formulations.`,
 
-        medicinal: `Amla acts as Antioxidant, Immunity booster, Digestive stimulant, Mild laxative, Antidiabetic agent, Hepatoprotective agent, and Anti-inflammatory medicine. It is commonly used for treating acidity, constipation, anemia, cough, cold, and skin disorders.`
+        medicinal: 
+            `Amla acts as Antioxidant, Immunity booster, Digestive stimulant, Mild laxative, Antidiabetic agent, Hepatoprotective agent, and Anti-inflammatory medicine. It is commonly used for treating acidity, constipation, anemia, cough, cold, and skin disorders.`
     },
 
     "cardamom": {
