@@ -364,3 +364,128 @@ async function captureAndPredict(){
         `;
     }
 }
+// SEARCH DRUG
+function searchDrug(){
+
+    const input =
+    document.getElementById(
+        "searchInput"
+    ).value.toLowerCase();
+
+    const drug =
+    drugDatabase[input];
+
+    const infoBox =
+    document.getElementById(
+        "drug-info"
+    );
+
+    const labelBox =
+    document.getElementById(
+        "label-container"
+    );
+
+    if(drug){
+
+        labelBox.innerHTML = `
+
+            <div class="result-card">
+
+                <h2>
+                    ${input}
+                </h2>
+
+            </div>
+        `;
+
+        infoBox.innerHTML = `
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Hindi Name
+                </div>
+
+                <div class="info-text">
+                    ${drug.hindi}
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Biological Name
+                </div>
+
+                <div class="info-text">
+                    ${drug.biological}
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Description
+                </div>
+
+                <div class="info-text">
+                    ${drug.description}
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Found In
+                </div>
+
+                <div class="info-text">
+                    ${drug.found}
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Uses in Pharmacy
+                </div>
+
+                <div class="info-text">
+                    ${drug.uses}
+                </div>
+
+            </div>
+
+            <div class="info-box">
+
+                <div class="info-title">
+                    Medicinal Uses
+                </div>
+
+                <div class="info-text">
+                    ${drug.medicinal}
+                </div>
+
+            </div>
+        `;
+
+    } else {
+
+        labelBox.innerHTML = `
+
+            <div class="result-card">
+
+                <h2>
+                    Drug Not Found
+                </h2>
+
+            </div>
+        `;
+
+        infoBox.innerHTML = "";
+    }
+}
