@@ -126,6 +126,159 @@ const drugDatabase = {
         toxicity: `Symptoms of toxicity include nausea, vomiting, diarrhea, blurred vision, irregular heartbeat, dizziness, confusion, and severe poisoning may lead to fatal cardiac arrest.`
     }
 };
+,
+"tulsi": {
+    hindi: "तुलसी",
+    biological: "Ocimum sanctum",
+    family: "Lamiaceae",
+    part: "Leaves, whole plant",
+
+    description: `Tulsi is an aromatic, erect herb growing up to 30–60 cm in height. It has branched stems, opposite green or purple leaves, and small purplish flowers arranged in spikes. The plant has a strong characteristic odor due to essential oils.`,
+
+    found: `Tulsi is native to India and widely grown throughout the country in gardens and temples. It thrives in tropical and subtropical climates and grows well in well-drained soil with good sunlight.`,
+
+    constituents: `Tulsi contains essential oils rich in eugenol, along with ursolic acid, rosmarinic acid, and flavonoids.`,
+
+    uses: `It is used in herbal syrups, cough preparations, and immunity-boosting formulations.`,
+
+    medicinal: `Tulsi acts as an antimicrobial, anti-inflammatory, and adaptogenic agent. It is used in cough, cold, fever, and stress-related disorders.`
+},
+
+"neem": {
+    hindi: "नीम",
+    biological: "Azadirachta indica",
+    family: "Meliaceae",
+    part: "Leaves, bark, seeds",
+
+    description: `Neem is a large evergreen tree with compound leaves and small white flowers. It produces olive-like fruits. It is well known for its bitter taste and medicinal properties.`,
+
+    found: `Neem is native to India and grows widely in tropical and semi-arid regions. It is commonly found in villages, roadsides, and forests.`,
+
+    constituents: `It contains azadirachtin, nimbin, nimbidin, and various flavonoids.`,
+
+    uses: `Used in antiseptic creams, soaps, and dental products.`,
+
+    medicinal: `Neem shows antibacterial, antifungal, and anti-inflammatory properties. It is used in skin diseases, infections, and as a blood purifier.`
+},
+
+"turmeric": {
+    hindi: "हल्दी",
+    biological: "Curcuma longa",
+    family: "Zingiberaceae",
+    part: "Rhizome",
+
+    description: `Turmeric is a perennial herb with underground rhizomes that are bright yellow in color. The plant has long leaves and yellow flowers.`,
+
+    found: `Native to India and Southeast Asia. Grown in states like Maharashtra, Tamil Nadu, Andhra Pradesh. Requires warm and humid climate.`,
+
+    constituents: `Contains curcumin, volatile oils, and resins.`,
+
+    uses: `Used in anti-inflammatory formulations and topical preparations.`,
+
+    medicinal: `Acts as an anti-inflammatory, antioxidant, and antiseptic. Used in wounds, arthritis, and liver disorders.`
+},
+
+"aloe vera": {
+    hindi: "घृतकुमारी",
+    biological: "Aloe barbadensis",
+    family: "Liliaceae",
+    part: "Leaves (gel)",
+
+    description: `Aloe vera is a succulent plant with thick, fleshy leaves containing a clear gel. Leaves have spiny margins and store water.`,
+
+    found: `Grows in dry and arid regions. Cultivated widely in India, Africa, and tropical regions.`,
+
+    constituents: `Contains aloin, aloe-emodin, and polysaccharides.`,
+
+    uses: `Used in creams, gels, laxative preparations, and cosmetics.`,
+
+    medicinal: `Used for wound healing, burns, skin care, and constipation.`
+},
+
+"brahmi": {
+    hindi: "ब्राह्मी",
+    biological: "Bacopa monnieri",
+    family: "Scrophulariaceae",
+    part: "Whole plant",
+
+    description: `Brahmi is a small creeping herb that grows in moist and marshy areas. It has succulent, oblong leaves and small white or light purple flowers. The plant spreads along the ground and roots at nodes.`,
+
+    found: `Found in wet areas in India.`,
+
+    constituents: `Bacosides.`,
+
+    uses: `Brain tonics.`,
+
+    medicinal: `Memory enhancer.`
+},
+
+"giloy": {
+    hindi: "गिलोय",
+    biological: "Tinospora cordifolia",
+    family: "Menispermaceae",
+    part: "Stem",
+
+    description: `Giloy is a large climbing shrub with long, twining stems and heart-shaped leaves. The stem is fleshy and green, and it produces aerial roots. It often grows over trees and supports itself by climbing.`,
+
+    found: `Found throughout India.`,
+
+    constituents: `Alkaloids.`,
+
+    uses: `Immunity boosters.`,
+
+    medicinal: `Used in fever and immunity improvement.`
+},
+
+"peppermint": {
+    hindi: "पुदीना",
+    biological: "Mentha piperita",
+    family: "Lamiaceae",
+    part: "Leaves",
+
+    description: `Peppermint is a small herb with green leaves and a strong aromatic smell. It has square stems and produces small purple flowers. The plant gives a cooling sensation due to menthol.`,
+
+    found: `Found in temperate regions.`,
+
+    constituents: `Menthol.`,
+
+    uses: `Used in lozenges.`,
+
+    medicinal: `Used in indigestion and provides cooling effect.`
+},
+
+"black pepper": {
+    hindi: "काली मिर्च",
+    biological: "Piper nigrum",
+    family: "Piperaceae",
+    part: "Dried fruits",
+
+    description: `Black Pepper consists of small round wrinkled berries having black or brown color with strong pungent taste.`,
+
+    found: `Cultivated mainly in tropical regions of India especially Kerala, Karnataka, and Tamil Nadu.`,
+
+    constituents: `Piperine, Volatile oil, Chavicine.`,
+
+    uses: `Used in Trikatu formulation and enhances drug absorption.`,
+
+    medicinal: `Used in indigestion, cold, and cough.`
+},
+
+"clove": {
+    hindi: "लौंग",
+    biological: "Syzygium aromaticum",
+    family: "Myrtaceae",
+    part: "Flower buds",
+
+    description: `Clove consists of dried flower buds rich in essential oil. It possesses strong aroma due to eugenol.`,
+
+    found: `Cultivated in tropical regions including India, Indonesia, and Sri Lanka.`,
+
+    constituents: `Eugenol (70–90%), Caryophyllene, Tannins.`,
+
+    uses: `Used in dental preparations, mouthwash, and toothpaste.`,
+
+    medicinal: `Used in tooth pain relief and as digestive aid.`
+}
 
 // START CAMERA
 async function init() {
