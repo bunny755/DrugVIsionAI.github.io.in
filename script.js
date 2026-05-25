@@ -146,7 +146,7 @@ async function init() {
     new tmImage.Webcam(
         350,
         350,
-        true
+        false
     );
 
     await webcam.setup();
@@ -488,4 +488,38 @@ function searchDrug(){
 
         infoBox.innerHTML = "";
     }
+}
+// SWITCH CAMERA
+async function switchCamera(){
+
+    // STOP CURRENT CAMERA
+    webcam.stop();
+
+    // TOGGLE CAMERA
+    const currentFacingMode =
+    webcam.webcam.facingMode;
+
+    const useFront =
+    currentFacingMode === "environment";
+
+    webcam =
+    new tmImage.Webcam(
+        350,
+        350,
+        useFront
+    );
+
+    await webcam.setup();
+
+    await webcam.play();
+
+    document.getElementById(
+        "webcam-container"
+    ).innerHTML = "";
+
+    document.getElementById(
+        "webcam-container"
+    ).appendChild(webcam.canvas);
+
+    window.requestAnimationFrame(loop);
 }
