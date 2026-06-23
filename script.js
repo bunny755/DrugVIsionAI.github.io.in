@@ -279,29 +279,25 @@ const drugDatabase = {
     medicinal: `Used in tooth pain relief and as digestive aid.`
 },
 
-// START CAMERA
-async function init() {
+async function init(cameraMode = "environment") {
 
-    const modelURL =
-    URL + "model.json";
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
 
-    const metadataURL =
-    URL + "metadata.json";
-
-    model =
-    await tmImage.load(
+    model = await tmImage.load(
         modelURL,
         metadataURL
     );
 
-    webcam =
-    new tmImage.Webcam(
+    webcam = new tmImage.Webcam(
         350,
         350,
-        true
+        false
     );
 
-    await webcam.setup();
+    await webcam.setup({
+        facingMode: cameraMode
+    });
 
     await webcam.play();
 
@@ -312,25 +308,6 @@ async function init() {
     document.getElementById(
         "webcam-container"
     ).appendChild(webcam.canvas);
-
-    window.requestAnimationFrame(loop);
-}
-
-// OPEN BACK CAMERA
-async function openBackCamera(){
-
-    if(webcam){
-
-        webcam.stop();
-    }
-
-    await init("environment");
-}
-
-// CAMERA LOOP
-async function loop(){
-
-    webcam.update();
 
     window.requestAnimationFrame(loop);
 }
