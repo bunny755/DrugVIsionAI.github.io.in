@@ -124,9 +124,8 @@ const drugDatabase = {
         medicinal: `Strengthens heart muscle contractions, Improves pumping efficiency of the heart, Regulates irregular heartbeat, Controls cardiac arrhythmias, Reduces edema associated with heart disease.`,
 
         toxicity: `Symptoms of toxicity include nausea, vomiting, diarrhea, blurred vision, irregular heartbeat, dizziness, confusion, and severe poisoning may lead to fatal cardiac arrest.`
-    }
-};
-,
+    },
+
 "tulsi": {
     hindi: "तुलसी",
     biological: "Ocimum sanctum",
