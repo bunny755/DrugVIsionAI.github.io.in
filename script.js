@@ -278,6 +278,7 @@ const drugDatabase = {
 
     medicinal: `Used in tooth pain relief and as digestive aid.`
 },
+};
 
 async function init(cameraMode = "environment") {
 
