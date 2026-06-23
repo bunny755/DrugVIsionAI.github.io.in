@@ -647,3 +647,29 @@ document.getElementById(
         infoBox.innerHTML = "";
     }
 }
+
+async function captureAndPredict(){
+
+    if(!model){
+
+        alert("Model Not Loaded");
+        return;
+    }
+
+    if(!webcam){
+
+        alert("Camera Not Started");
+        return;
+    }
+
+    const prediction =
+    await model.predict(webcam.canvas);
+
+    console.log(prediction);
+
+    alert(
+        prediction[0].className +
+        " : " +
+        prediction[0].probability
+    );
+}
