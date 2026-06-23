@@ -128,6 +128,41 @@ async function testCamera(){
     <script src="script.js"></script>
 
 </body>
+    <button onclick="testCamera()">
+    Start Camera
+</button>
+
+<div id="webcam-container"></div>
+
+<script>
+async function testCamera() {
+
+    try {
+
+        const stream = await navigator.mediaDevices.getUserMedia({
+            video: true
+        });
+
+        const video = document.createElement("video");
+
+        video.srcObject = stream;
+        video.autoplay = true;
+        video.playsInline = true;
+
+        document.getElementById(
+            "webcam-container"
+        ).appendChild(video);
+
+        alert("Camera Opened Successfully");
+
+    } catch (error) {
+
+        alert("ERROR: " + error.message);
+
+        console.log(error);
+    }
+}
+</script>
 
 
 
