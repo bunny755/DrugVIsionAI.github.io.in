@@ -295,9 +295,18 @@ async function init(cameraMode = "environment") {
         false
     );
 
+   try {
+
     await webcam.setup({
         facingMode: cameraMode
     });
+
+} catch(error) {
+
+    alert("Camera permission denied");
+    console.error(error);
+    return;
+}
 
     await webcam.play();
 
@@ -312,7 +321,15 @@ async function init(cameraMode = "environment") {
     window.requestAnimationFrame(loop);
 }
 
+  async function loop() {
+    webcam.update();
+    window.requestAnimationFrame(loop);
+}
 // DETECTION
+if (!model || !webcam) {
+    alert("Please start camera first");
+    return;
+}
 async function captureAndPredict(){
 
     webcam.update();
@@ -508,9 +525,10 @@ async function captureAndPredict(){
 function searchDrug(){
 
     const input =
-    document.getElementById(
-        "searchInput"
-    ).value.toLowerCase();
+document.getElementById(
+    "searchInput"
+).value.toLowerCase().trim();
+
 
     const drug =
     drugDatabase[input];
