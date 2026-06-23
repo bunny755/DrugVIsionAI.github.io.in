@@ -673,3 +673,72 @@ async function captureAndPredict(){
         prediction[0].probability
     );
 }
+
+let capturedCanvas = null;
+
+// CAPTURE PHOTO
+function captureImage() {
+
+    if (!webcam) {
+        alert("Start Camera First");
+        return;
+    }
+
+    capturedCanvas = document.createElement("canvas");
+
+    capturedCanvas.width = webcam.canvas.width;
+    capturedCanvas.height = webcam.canvas.height;
+
+    const ctx = capturedCanvas.getContext("2d");
+
+    ctx.drawImage(
+        webcam.canvas,
+        0,
+        0
+    );
+
+    document.getElementById(
+        "webcam-container"
+    ).appendChild(capturedCanvas);
+
+    alert("Photo Captured");
+}
+
+// DETECT DRUG
+async function detectCapturedImage() {
+
+    if (!capturedCanvas) {
+
+        alert("Capture Photo First");
+
+        return;
+    }
+
+    const prediction =
+    await model.predict(capturedCanvas);
+
+    let highestPrediction =
+    prediction[0];
+
+    for (let i = 1; i < prediction.length; i++) {
+
+        if (
+            prediction[i].probability >
+            highestPrediction.probability
+        ) {
+
+            highestPrediction =
+            prediction[i];
+        }
+    }
+
+    document.getElementById(
+        "label-container"
+    ).innerHTML = `
+        <div class="result-card">
+            <h2>
+                ${highestPrediction.className}
+            </h2>
+        </div>
+    `;
+}
