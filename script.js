@@ -299,7 +299,7 @@ async function init() {
     new tmImage.Webcam(
         350,
         350,
-        true
+        false
     );
 
     await webcam.setup();
