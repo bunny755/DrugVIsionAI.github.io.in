@@ -56,7 +56,51 @@
    <!-- BUTTONS -->
 
 <div class="button-section">
+<script>
 
+async function testCamera(){
+
+    try{
+
+        const stream =
+        await navigator.mediaDevices.getUserMedia({
+            video:true
+        });
+
+        alert("Camera Permission Granted");
+
+        const video =
+        document.createElement("video");
+
+        video.srcObject = stream;
+
+        video.autoplay = true;
+
+        video.playsInline = true;
+
+        document.getElementById(
+            "webcam-container"
+        ).innerHTML = "";
+
+        document.getElementById(
+            "webcam-container"
+        ).appendChild(video);
+
+    }
+
+    catch(error){
+
+        alert(
+            "Camera Error: " +
+            error.message
+        );
+
+        console.log(error);
+    }
+
+}
+
+</script>
  <button onclick="init('environment')">
      
     Start Camera
