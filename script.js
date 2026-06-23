@@ -277,7 +277,7 @@ const drugDatabase = {
     uses: `Used in dental preparations, mouthwash, and toothpaste.`,
 
     medicinal: `Used in tooth pain relief and as digestive aid.`
-}
+},
 
 // START CAMERA
 async function init() {
